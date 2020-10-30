@@ -15,6 +15,9 @@ def mnist(args):
         ])
     train_data = MNIST(base_path, train=True, download=True,
                        transform=transform)
+    train_data.means = (0.1307,)
+    train_data.stds = (0.3081,)
+    train_data.bounds = [0, 1]
     test_data = MNIST(base_path, train=False,
                       transform=transform)
     train_loader = torch.utils.data.DataLoader(train_data, batch_size=batch_size,

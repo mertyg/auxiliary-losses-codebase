@@ -23,8 +23,8 @@ def arg_parser():
     parser.add_argument("--resume", default="", help="Location of the checkpoint file to resume training.")
 
     # Custom Loss arguments
-    parser.add_argument("--custom-loss", default="gaussian-kl_0.1")
-    parser.add_argument("--add-custom-loss", action="store_true")
+    parser.add_argument("--custom-loss", default=None)
     parser.add_argument("--custom-loss-weight", default=1.)
+    parser.add_argument("--loss-config-file")
 
     return parser

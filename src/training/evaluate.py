@@ -25,8 +25,8 @@ def eval(experiment, model, loader, custom_loss_fn, args, batch_wrap):
             top1.update(prec1[0], N)
             losses.update(loss, N)
 
-            if args.add_custom_loss:
-                custom_loss = custom_loss_fn(inputs, logits, model)
+            if args.custom_loss:
+                custom_loss = custom_loss_fn(inputs, targets, logits, model)
                 custom_losses.update(custom_loss, N)
 
             if experiment.tqdm:

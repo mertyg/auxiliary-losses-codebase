@@ -9,13 +9,12 @@ This repo will serve as a codebase for this type of experiments. <br>
 - [x] Basic MLP & Convnets
 - [x] Resnets
 - [ ] LSTMs
-- [ ] VAEs
 - [ ] Transformers
 
 <br>
 
 **Tasks**
-- [x] Image Classification (ImageNet, CIFAR10, MNIST)
+- [x] Image Classification (ImageNet, CIFAR10, CIFAR100, MNIST)
 - [x] Time Series Classification (UCR) 
 - [ ] Time Series Regression
 - [ ] Object Detection
@@ -24,13 +23,15 @@ This repo will serve as a codebase for this type of experiments. <br>
 **Losses**: 
 - [x] Augmentation + KL-divergence [1]
 - [ ] Contrastive loss 
-- [ ] Adversarial Examples
+- [x] Adversarial Examples
 
 <br> 
 
 Example runs: <br>
-`python main.py --model=convnet --dataset=mnist --custom-loss=gaussian-kl_0.1 --add-custom-loss --device=cpu --tqdm` <br>
-`python main.py --model=mlp --dataset=UCR_ECG200 --custom-loss=gaussian-kl_0.1 --add-custom-loss --device=cpu --tqdm` <br>
+`python main.py --model=convnet --dataset=mnist --custom-loss=gaussian-kl_0.1 --device=cpu --tqdm` <br>
+`python main.py --model=mlp --dataset=UCR_ECG200 --custom-loss=gaussian-kl_0.1 --tqdm` <br>
+`python main.py --model=convnet --dataset=mnist --custom-loss=adversarial-attack --tqdm --loss-config-file=./configs/pgd_2_0.5.json` <br>
+`python main.py --model=convnet --dataset=mnist --custom-loss=adversarial-attack --device=cpu --tqdm --loss-config-file=./configs/pgd_2_0.5.json` <br>
 
 Will add further loss terms and some example runs soon. <br>
 

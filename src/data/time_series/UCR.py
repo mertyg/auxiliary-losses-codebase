@@ -71,6 +71,11 @@ def load_dataset(args):
 
     train_dataset = UCRDataset(X_train, y_train, dataset_name)
     test_dataset = UCRDataset(X_test, y_test, dataset_name)
+
+    train_dataset.means = (0,)
+    train_dataset.stds = (1,)
+    train_dataset.bounds = (-np.inf, np.inf)
+
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=num_workers)
     test_loader = DataLoader(test_dataset, batch_size=test_batch_size, shuffle=False, num_workers=num_workers)
     return train_loader, test_loader

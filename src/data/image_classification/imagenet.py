@@ -24,6 +24,10 @@ def imagenet(args):
             normalize,
         ]))
 
+    train_dataset.means = [0.485, 0.456, 0.406]
+    train_dataset.stds = [0.229, 0.224, 0.225]
+    train_dataset.bounds = [0, 1]
+
     train_loader = torch.utils.data.DataLoader(
         train_dataset, batch_size=batch_size, shuffle=True,
         num_workers=num_workers, pin_memory=True)

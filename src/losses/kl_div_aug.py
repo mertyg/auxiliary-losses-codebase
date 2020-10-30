@@ -19,13 +19,9 @@ class KL_aug_base(nn.Module):
         kl_loss = torch.sum(p * (log_p - log_q), dim=-1)
         return kl_loss
 
-    def forward(self, input, logits, model):
+    def forward(self, input, targets, logits, model):
         """
-        Perturbs the input with gaussian noise, then evaluated kl-divergence between predictive distributions.
-        :param input:
-        :param logits:
-        :param model:
-        :return:
+        Perturbs the input with gaussian noise, then evaluates kl-divergence between predictive distributions.
         """
         noise = self._sample_noise(input)
         perturbed = input + noise
@@ -33,4 +29,3 @@ class KL_aug_base(nn.Module):
         kl_loss = self._kl_div(logits, perturbed_logits)
         kl_loss = self.custom_loss_weight * torch.mean(kl_loss)
         return kl_loss
-

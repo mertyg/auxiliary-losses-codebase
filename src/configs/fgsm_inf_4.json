@@ -1,0 +1,8 @@
+{
+    "attack_name":"FGSM",
+    "epsilon":"4/255",
+    "constraint": "inf",
+    "attack_args": {
+    }
+}
+
