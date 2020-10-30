@@ -9,13 +9,14 @@ This repo will serve as a codebase for this type of experiments. <br>
 - [x] Basic MLP & Convnets
 - [x] Resnets
 <br>
-**Tasks**: 
+
+**Architectures**
 - [x] Image Classification (ImageNet, CIFAR10, MNIST)
 - [x] Time Series Classification (UCR) 
 <br> 
 
 **Losses**: 
-- [x] Augmentation + KL-divergence [1] <br> 
+- [x] Augmentation + KL-divergence [1]
 - [ ] Contrastive loss <br>
 
 <br> 
