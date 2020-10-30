@@ -8,16 +8,23 @@ This repo will serve as a codebase for this type of experiments. <br>
 **Architectures**
 - [x] Basic MLP & Convnets
 - [x] Resnets
+- [ ] LSTMs
+- [ ] VAEs
+- [ ] Transformers
+
 <br>
 
-**Architectures**
+**Tasks**
 - [x] Image Classification (ImageNet, CIFAR10, MNIST)
 - [x] Time Series Classification (UCR) 
+- [ ] Time Series Regression
+- [ ] Object Detection
 <br> 
 
 **Losses**: 
 - [x] Augmentation + KL-divergence [1]
-- [ ] Contrastive loss <br>
+- [ ] Contrastive loss 
+- [ ] Adversarial Examples
 
 <br> 
 
