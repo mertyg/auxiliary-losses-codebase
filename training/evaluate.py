@@ -37,13 +37,16 @@ def eval(experiment, model, loader, custom_loss_fn, args, batch_wrap):
 
     top1_acc = top1.avg
     loss = losses.avg
-    custom_loss = custom_losses.avg
+    try:
+        custom_loss = custom_losses.avg.item()
+    except:
+        custom_loss = custom_losses.avg
 
     if logits.shape[1] > 5:
         top5_acc = top5.avg
-        report = {"Top1": top1_acc.item(), "Top5": top5_acc.item(), "Loss": loss.item(), "CustomLoss": custom_loss.item()}
+        report = {"Top1": top1_acc.item(), "Top5": top5_acc.item(), "Loss": loss.item(), "CustomLoss": custom_loss}
     else:
-        report = {"Top1": top1_acc.item(), "Loss": loss.item(), "CustomLoss": custom_loss.item()}
+        report = {"Top1": top1_acc.item(), "Loss": loss.item(), "CustomLoss": custom_loss}
 
     return report
 

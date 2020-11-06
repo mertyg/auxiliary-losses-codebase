@@ -21,7 +21,7 @@ class KL_aug_base(nn.Module):
 
     def forward(self, input, targets, logits, model):
         """
-        Perturbs the input with gaussian noise, then evaluates kl-divergence between predictive distributions.
+        Perturbs the input with some kind of noise, then evaluates kl-divergence between predictive distributions.
         """
         noise = self._sample_noise(input)
         perturbed = input + noise

@@ -27,11 +27,22 @@ This repo will serve as a codebase for this type of experiments. <br>
 
 <br> 
 
-Example runs: <br>
-`python main.py --model=convnet --dataset=mnist --custom-loss=gaussian-kl_0.1 --device=cpu --tqdm` <br>
-`python main.py --model=mlp --dataset=UCR_ECG200 --custom-loss=gaussian-kl_0.1 --tqdm` <br>
-`python main.py --model=convnet --dataset=mnist --custom-loss=adversarial-attack --tqdm --loss-config-file=./configs/pgd_2_0.5.json` <br>
-`python main.py --model=convnet --dataset=mnist --custom-loss=adversarial-attack --device=cpu --tqdm --loss-config-file=./configs/pgd_2_0.5.json` <br>
+**Benchmarks**: 
+- [x] Gaussian noise
+- [ ] Common corruptions
+- [ ] Adversarial examples
+
+<br> 
+
+
+Example training runs: <br>
+`python training.py --model=convnet --dataset=mnist --custom-loss=gaussian-kl_0.1 --device=cpu --tqdm` <br>
+`python training.py --model=mlp --dataset=UCR_ECG200 --custom-loss=gaussian-kl_0.1 --tqdm` <br>
+`python training.py --model=convnet --dataset=mnist --custom-loss=adversarial-attack --tqdm --loss-config-file=./configs/pgd_2_0.5.json` <br>
+`python training.py --model=convnet --dataset=mnist --custom-loss=adversarial-attack --device=cpu --tqdm --loss-config-file=./configs/pgd_2_0.5.json` <br>
+
+Evaluation: <br>
+`python evaluation.py --model=mlp --dataset=UCR_ECG200 --eval-benchmark=gaussian_0.1 --tqdm --device=cpu --eval-run=./results/UCR_ECG200_mlp_Adam_0.001_gaussian-kl_0.1`
 
 Will add further loss terms and some example runs soon. <br>
 

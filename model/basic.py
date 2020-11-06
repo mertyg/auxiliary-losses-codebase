@@ -1,10 +1,15 @@
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
+__valid_tasks_mlp__ = ["UCR"]
+__valid_tasks_conv__ = ["mnist"]
 
 
 class MLP(nn.Module):
     def __init__(self, args, loader, dropout_p=0.3):
+        dataset_type = args.dataset.split("_")[0]
+        if dataset_type not in __valid_tasks_mlp__:
+            raise NotImplementedError(f"MLP is not implemented for {args.dataset}")
         dataset = loader.dataset
         super(MLP, self).__init__()
         self.fc1 = nn.Linear(dataset.input_size, 128)
@@ -29,6 +34,9 @@ class MLP(nn.Module):
 
 class ConvNet(nn.Module):
     def __init__(self, args, loader):
+        dataset_type = args.dataset.split("_")[0]
+        if dataset_type not in __valid_tasks_conv__:
+            raise NotImplementedError(f"ConvNet is not implemented for {args.dataset}")
         super(ConvNet, self).__init__()
         self.conv1 = nn.Conv2d(1, 32, 3, 1)
         self.conv2 = nn.Conv2d(32, 64, 3, 1)

@@ -2,8 +2,9 @@ from data import get_dataset
 from model import get_optimizer, get_model
 from training import train_step, save_checkpoint, eval, plot_hist
 from losses import get_loss
-from config import arg_parser
+from config import train_arg_parser
 from datetime import datetime
+import shutil
 import os
 import numpy as np
 import json
@@ -39,9 +40,11 @@ class Experiment:
         self.test_history = {}
 
     def init_experiment(self, args):
-        time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%N")
-        run_name = f"{args.dataset}_{args.model}_{args.optimizer}_{time}"
+        #time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S_%N")
+        run_name = f"{args.dataset}_{args.model}_{args.optimizer}_{args.custom_loss}"#_{time}"
         folder = os.path.join(args.results_folder, run_name)
+        if os.path.isdir(folder):
+            shutil.rmtree(folder)
         os.makedirs(folder)  # Create the folders if it does not exist
         setattr(args, "logdir", folder)
         setattr(args, "checkpoint_path", os.path.join(folder, "ckpt"))
@@ -114,7 +117,7 @@ class Experiment:
 
 
 if __name__ == "__main__":
-    parser = arg_parser()
+    parser = train_arg_parser()
     args = parser.parse_args()
     experiment = Experiment(args)
     experiment.run()
